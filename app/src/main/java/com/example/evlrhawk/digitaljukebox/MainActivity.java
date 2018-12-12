@@ -31,8 +31,6 @@ import com.spotify.sdk.android.authentication.AuthenticationResponse;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 public class MainActivity extends AppCompatActivity {
 
     private static final String CLIENT_ID = "27ead52d8b6d426a85b5a01cd63b388c";
