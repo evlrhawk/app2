@@ -6,6 +6,13 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 
+/**
+ * HostVsGuestDialogFragment
+ * Asks the user if they are hosting a party or joining a party and then sets
+ * the corresponding Host boolean in MainActivity
+ *
+ * Written by Christopher Wilson (Tyler Elkington helped a little, I guess)
+ */
 public class HostVsGuestDialogFragment extends DialogFragment {
 
     final String dialog_Host_Vs_Guest = "Do you want to be a host a guest?";

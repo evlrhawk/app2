@@ -46,12 +46,12 @@ public class MainActivity extends AppCompatActivity {
     List<ToSend> sendList;
     List<String> keyList;
 
-
-    private static Boolean isHost;
+    // for use in HostVsGuest fragment
+    private static Boolean isHost;   // grants special privilages when true
     private Object HostVsClassDialogFragment;
-
     public void setHost(boolean host) { this.isHost = host; }
 
+    // to be used when making our queue in FireBase
     DatabaseReference databaseReference;
 
     @Override
@@ -96,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     public void showData(){
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -150,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -199,6 +201,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Adds a string to our firebase database
+     *
      * Written by Christopher Wilson
      */
 
