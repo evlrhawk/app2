@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        listView = findViewById(R.id.list_view);
+//        listView = findViewById(R.id.list_view);
 
         AuthenticationRequest.Builder builder =
                 new AuthenticationRequest.Builder(CLIENT_ID, AuthenticationResponse.Type.TOKEN, REDIRECT_URI);
@@ -69,13 +69,13 @@ public class MainActivity extends AppCompatActivity {
 //        string = (EditText) findViewById(R.id.sendString);
         // our button
 
-        // to call our addString button on click
-        send.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addString();
-            }
-        });
+//        // to call our addString button on click
+//        send.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                addString();
+//            }
+//        });
 //        // Attach a listener to read the data at our posts reference
 
 //        btnPull.setOnClickListener(new View.OnClickListener() {
@@ -102,38 +102,38 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void showData(){
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                ToSendAdapter toSendAdapter;
-                sendList.clear();
-                toSendAdapter = new ToSendAdapter(MainActivity.this, sendList);
-                listView.setAdapter(toSendAdapter);
-                keyList.clear();
-                for(DataSnapshot trackSnapshot : dataSnapshot.getChildren()) {
-                    ToSend toSend = new ToSend();
-                    if (toSend == null){
-                        toSend.setToSend("1");
-                        toSend = trackSnapshot.getValue(ToSend.class);
-                        keyList.add(trackSnapshot.getKey());
-                    }
-                    else {
-                        toSend = trackSnapshot.getValue(ToSend.class);
-                        keyList.add(trackSnapshot.getKey());
-                    }
-                    sendList.add(toSend);
-                }
-                toSendAdapter = new ToSendAdapter(MainActivity.this, sendList);
-                listView.setAdapter(toSendAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e(TAG,"You done messed up Aaron!");
-            }
-        });
-    }
+//    public void showData(){
+//        databaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                ToSendAdapter toSendAdapter;
+//                sendList.clear();
+//                toSendAdapter = new ToSendAdapter(MainActivity.this, sendList);
+//                listView.setAdapter(toSendAdapter);
+//                keyList.clear();
+//                for(DataSnapshot trackSnapshot : dataSnapshot.getChildren()) {
+//                    ToSend toSend = new ToSend();
+//                    if (toSend == null){
+//                        toSend.setToSend("1");
+//                        toSend = trackSnapshot.getValue(ToSend.class);
+//                        keyList.add(trackSnapshot.getKey());
+//                    }
+//                    else {
+//                        toSend = trackSnapshot.getValue(ToSend.class);
+//                        keyList.add(trackSnapshot.getKey());
+//                    }
+//                    sendList.add(toSend);
+//                }
+//                toSendAdapter = new ToSendAdapter(MainActivity.this, sendList);
+//                listView.setAdapter(toSendAdapter);
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//                Log.e(TAG,"You done messed up Aaron!");
+//            }
+//        });
+//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
