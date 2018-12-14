@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private SpotifyAppRemote mSpotifyAppRemote;
     private static final String TAG = "Failed Here";
     private EditText string;
-    private Button send, btnPull;
+    private Button send, btnGuest;
     private ListView listView;
     List<ToSend> sendList;
     List<String> keyList;
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnPull = (Button) findViewById(R.id.guestBtn);
+        btnGuest = (Button) findViewById(R.id.guestBtn);
         listView = findViewById(R.id.list_view);
 
         AuthenticationRequest.Builder builder =
