@@ -181,6 +181,7 @@ public class MainActivity extends AppCompatActivity {
         // Play a playlist
 //        mSpotifyAppRemote.getPlayerApi().play("spotify:user:spotify:playlist:37i9dQZF1DX2sUQwD7tbmL");
 //        mSpotifyAppRemote.getPlayerApi().play("spotify:user:sofigomezc:playlist:1EoaGONaSh0XVkuljYXvdq");
+        mSpotifyAppRemote.getPlayerApi().play("spotify:album:3JfSxDfmwS5OeHPwLSkrfr");
         // Subscribe to PlayerState
         String songReq = string.getText().toString();
 
