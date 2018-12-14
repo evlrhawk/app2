@@ -77,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
         send = (Button) findViewById(R.id.hostBtn);
 
         HostVsGuestDialogFragment HvG = new HostVsGuestDialogFragment();
-        setContentView(R.layout.activity_host_vs_guest);
 
         // to call our addString button on click
         send.setOnClickListener(new View.OnClickListener() {
