@@ -95,9 +95,16 @@ public class HostActivity extends AppCompatActivity {
         playBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View playView) {
-                mSpotifyAppRemote.getPlayerApi().play("spotify:album:3JfSxDfmwS5OeHPwLSkrfr");
+                ToSend _toSend = sendList.get(0);
+                String song = _toSend.getToSend();
+                mSpotifyAppRemote.getPlayerApi().play(song);
                 // Subscribe to PlayerState
-
+                for (int i = 1; i < sendList.size(); i++){
+                    Log.e("Entered for loop", song);
+                    _toSend = sendList.get(i);
+                    song = _toSend.getToSend();
+                    mSpotifyAppRemote.getPlayerApi().queue(song);
+                }
 
                 mSpotifyAppRemote.getPlayerApi()
                         .subscribeToPlayerState()
