@@ -34,7 +34,7 @@
         android:inputType="text|textUri|textPersonName"
         android:singleLine="true"
         android:textColor="@android:color/white"
-        app:layout_constraintEnd_toStartOf="@+id/btnGuestSend"
+        app:layout_constraintEnd_toStartOf="@+id/btnHostPull"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView" />
