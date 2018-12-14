@@ -29,7 +29,7 @@ import java.util.List;
 public class HostActivity extends AppCompatActivity {
     private final String TAG = "HostActivity";
 
-
+    // spotify developer information
     private static final String CLIENT_ID = "27ead52d8b6d426a85b5a01cd63b388c";
     private static final int REQUEST_CODE = 1337;
     private static final String REDIRECT_URI = "com.example.evlrhawk.digitaljukebox://callback";
@@ -82,15 +82,8 @@ public class HostActivity extends AppCompatActivity {
         });
 
 
-//        Button guestBtn = (Button) findViewById(R.id.guestBtn);
-//        guestBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View guestView){
-//                startActivity(new Intent(MainActivity.this, GuestActivity.class));
-//            }
-//        });
 
-
+        // plays spotify music if the button is pressed
         Button playBtn = (Button) findViewById(R.id.btnHostPlay);
         playBtn.setOnClickListener(new View.OnClickListener() {
             @Override

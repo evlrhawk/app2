@@ -32,17 +32,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
+    // spotify developer information
     private static final String CLIENT_ID = "27ead52d8b6d426a85b5a01cd63b388c";
     private static final int REQUEST_CODE = 1337;
     private static final String REDIRECT_URI = "com.example.evlrhawk.digitaljukebox://callback";
-  
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // authenticates user through spotify
         AuthenticationRequest.Builder builder =
                 new AuthenticationRequest.Builder(CLIENT_ID, AuthenticationResponse.Type.TOKEN, REDIRECT_URI);
 
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         //should make a button to go to the view
         Button hostBtn = (Button) findViewById(R.id.hostBtn);
+        // starts host activity if button is pressed
         hostBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View hostView){
@@ -61,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // starts guest activity if button is pressed
         Button guestBtn = (Button) findViewById(R.id.guestBtn);
         guestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // spotify code for authentication
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
