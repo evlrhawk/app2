@@ -70,12 +70,12 @@ public class MainActivity extends AppCompatActivity {
         // our button
 
         // to call our addString button on click
-        send.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addString();
-            }
-        });
+//        send.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                addString();
+//            }
+//        });
 //        // Attach a listener to read the data at our posts reference
 
 //        btnPull.setOnClickListener(new View.OnClickListener() {
@@ -86,15 +86,19 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
         //should make a button to go to the view
-        Button hostBtn = (Button)findViewById(R.id.hostBtn);
+
+        Button hostBtn = (Button) findViewById(R.id.hostBtn);
         hostBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View hostView){
+
                 startActivity(new Intent(MainActivity.this, HostActivity.class));
             }
         });
 
-        Button guestBtn = (Button)findViewById(R.id.guestBtn);
+        Button guestBtn = (Button) findViewById(R.id.guestBtn);
         guestBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View guestView){
                 startActivity(new Intent(MainActivity.this, GuestActivity.class));
             }
