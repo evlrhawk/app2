@@ -12,4 +12,5 @@
     <string name="track">Track</string>
     <string name="guest">Guest</string>
     <string name="isHost">Host</string>
+    <string name="play">Play</string>
 </resources>
