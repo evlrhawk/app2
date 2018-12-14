@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnGuest = (Button) findViewById(R.id.guestBtn);
         listView = findViewById(R.id.list_view);
 
         AuthenticationRequest.Builder builder =
@@ -67,9 +66,8 @@ public class MainActivity extends AppCompatActivity {
         sendList = new ArrayList<>();
         keyList = new ArrayList<>();
         // string taken from text entry in app
-        string = (EditText) findViewById(R.id.sendString);
+//        string = (EditText) findViewById(R.id.sendString);
         // our button
-        send = (Button) findViewById(R.id.hostBtn);
 
         // to call our addString button on click
         send.setOnClickListener(new View.OnClickListener() {
@@ -80,12 +78,12 @@ public class MainActivity extends AppCompatActivity {
         });
 //        // Attach a listener to read the data at our posts reference
 
-        btnPull.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showData();
-            }
-        });
+//        btnPull.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                showData();
+//            }
+//        });
 
         //should make a button to go to the view
         Button hostBtn = (Button)findViewById(R.id.hostBtn);
