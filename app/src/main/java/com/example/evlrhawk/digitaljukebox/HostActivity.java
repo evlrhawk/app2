@@ -64,7 +64,6 @@ public class HostActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.list_view);
         sendList = new ArrayList<>();
-        keyList = new ArrayList<>();
 
         // to call our addString button on click
         send.setOnClickListener(new View.OnClickListener() {
@@ -95,10 +94,12 @@ public class HostActivity extends AppCompatActivity {
         playBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View playView) {
+                // Sets first song to play
                 ToSend _toSend = sendList.get(0);
                 String song = _toSend.getToSend();
                 mSpotifyAppRemote.getPlayerApi().play(song);
-                // Subscribe to PlayerState
+
+                // Loads remaining songs into queue
                 for (int i = 1; i < sendList.size(); i++){
                     Log.e("Entered for loop", song);
                     _toSend = sendList.get(i);
@@ -167,25 +168,28 @@ public class HostActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // Sets up the List and Adapter to receive data from firebase
                 ToSendAdapter toSendAdapter;
                 sendList.clear();
                 toSendAdapter = new ToSendAdapter(HostActivity.this, sendList);
                 listView.setAdapter(toSendAdapter);
-                keyList.clear();
+
+                // Retrieving data from firebase
                 for(DataSnapshot trackSnapshot : dataSnapshot.getChildren()) {
                     ToSend toSend = new ToSend();
                     if (toSend == null){
                         toSend.setToSend("1");
                         toSend = trackSnapshot.getValue(ToSend.class);
-                        keyList.add(trackSnapshot.getKey());
                     }
                     else {
                         toSend = trackSnapshot.getValue(ToSend.class);
-                        keyList.add(trackSnapshot.getKey());
                     }
                     sendList.add(toSend);
                 }
+                // Adds the data to the adapter
                 toSendAdapter = new ToSendAdapter(HostActivity.this, sendList);
+
+                // Displays the List to the screen
                 listView.setAdapter(toSendAdapter);
             }
 
