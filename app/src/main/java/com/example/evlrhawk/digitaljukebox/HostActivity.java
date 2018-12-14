@@ -58,6 +58,7 @@ public class HostActivity extends AppCompatActivity {
             databaseReference.child(id).setValue(toSend1);
 
             Log.i(TAG, "Sent to firebase");
+            Toast.makeText(HostActivity.this, "String sent to database", Toast.LENGTH_SHORT).show();
 
         }
         // if we don't have anything in our text entry box
@@ -65,7 +66,7 @@ public class HostActivity extends AppCompatActivity {
             Log.v(TAG, "Sent to \"blank\" 'if' statement");
 
             // tell them to put something in
-            Toast.makeText(HostActivity.this, "Please type a string to send.", Toast.LENGTH_LONG);
+            Toast.makeText(HostActivity.this, "Please type a string to send.", Toast.LENGTH_LONG).show();
         }
     }
 }

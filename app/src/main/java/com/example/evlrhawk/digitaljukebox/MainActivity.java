@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private SpotifyAppRemote mSpotifyAppRemote;
     private static final String TAG = "Failed Here";
     private EditText string;
-    private Button send, btnPull;
+    private Button send, btnGuest;
     private ListView listView;
     List<ToSend> sendList;
     List<String> keyList;
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnPull = (Button) findViewById(R.id.guestBtn);
+        btnGuest = (Button) findViewById(R.id.guestBtn);
         listView = findViewById(R.id.list_view);
 
         AuthenticationRequest.Builder builder =
@@ -86,6 +86,18 @@ public class MainActivity extends AppCompatActivity {
                 showData();
             }
         });
+
+        //should make a button to go to the host view
+        Button hostBtn = (Button)findViewById(R.id.hostBtn);
+        hostBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View hostView){
+                startActivity(new Intent(MainActivity.this, HostActivity.class));
+            }
+        });
+
+        Button guestBtn = (Button)findViewById(R.id.guestBtn);
+
     }
 
     public void showData(){
@@ -226,4 +238,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Please type a string to send.", Toast.LENGTH_LONG);
         }
     }
+
+
 }
