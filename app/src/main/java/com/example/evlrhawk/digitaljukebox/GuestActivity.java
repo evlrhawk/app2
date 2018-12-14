@@ -27,7 +27,7 @@ public class GuestActivity extends AppCompatActivity {
 
         databaseReference = FirebaseDatabase.getInstance().getReference("track");
         URI = (EditText) findViewById(R.id.txtGuestSend);
-        send = (Button) findViewById(R.id.btnGuestPush);
+        send = (Button) findViewById(R.id.btnGuestSend);
     }
 
 

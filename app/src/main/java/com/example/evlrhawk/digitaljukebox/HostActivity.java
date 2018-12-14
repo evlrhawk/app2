@@ -26,8 +26,8 @@ public class HostActivity extends AppCompatActivity {
 
 
         databaseReference = FirebaseDatabase.getInstance().getReference("track");
-        URI = (EditText) findViewById(R.id.sendString);
-        btnPull = (Button) findViewById(R.id.btnGuestPush);
+        URI = (EditText) findViewById(R.id.txtHostSend);
+        btnPull = (Button) findViewById(R.id.btnGuestSend);
         send = (Button) findViewById(R.id.btnHostSend);
         play = (Button) findViewById(R.id.btnHostPlay);
     }
