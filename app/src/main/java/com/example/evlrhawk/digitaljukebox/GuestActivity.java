@@ -63,7 +63,7 @@ public class GuestActivity extends AppCompatActivity {
             // send the value to the database
             databaseReference.child(id).setValue(toSend1);
 
-            Log.i(TAG, "Sent to firebase");
+            Log.i(TAG, "Sent to FireBase");
             Toast.makeText(GuestActivity.this, "String sent to database", Toast.LENGTH_SHORT).show();
 
 
