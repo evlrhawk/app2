@@ -90,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
         //should make a button to go to the view
         Button hostBtn = (Button)findViewById(R.id.hostBtn);
         hostBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
             public void onClick(View hostView){
                 startActivity(new Intent(MainActivity.this, HostActivity.class));
             }
@@ -98,8 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button guestBtn = (Button)findViewById(R.id.guestBtn);
         guestBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View hostView){
+            public void onClick(View guestView){
                 startActivity(new Intent(MainActivity.this, GuestActivity.class));
             }
         });
