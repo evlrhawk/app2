@@ -56,6 +56,8 @@ public class GuestActivity extends AppCompatActivity {
             databaseReference.child(id).setValue(toSend1);
 
             Log.i(TAG, "Sent to firebase");
+            Toast.makeText(GuestActivity.this, "String sent to database", Toast.LENGTH_SHORT).show();
+
 
         }
         // if we don't have anything in our text entry box
