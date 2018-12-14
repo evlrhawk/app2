@@ -86,6 +86,18 @@ public class MainActivity extends AppCompatActivity {
                 showData();
             }
         });
+
+        //should make a button to go to the host view
+        Button hostBtn = (Button)findViewById(R.id.hostBtn);
+        hostBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View hostView){
+                startActivity(new Intent(MainActivity.this, HostActivity.class));
+            }
+        });
+
+        Button guestBtn = (Button)findViewById(R.id.guestBtn);
+
     }
 
     public void showData(){
@@ -226,4 +238,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Please type a string to send.", Toast.LENGTH_LONG);
         }
     }
+
+
 }
