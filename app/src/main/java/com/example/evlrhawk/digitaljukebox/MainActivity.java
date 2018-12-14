@@ -44,11 +44,6 @@ public class MainActivity extends AppCompatActivity {
     List<ToSend> sendList;
     List<String> keyList;
 
-    // for use in HostVsGuest fragment
-    private static Boolean isHost;   // grants special privilages when true
-    private Object HostVsClassDialogFragment;
-    public void setHost(boolean host) { this.isHost = host; }
-
     // to be used when making our queue in FireBase
     DatabaseReference databaseReference;
 
@@ -75,8 +70,6 @@ public class MainActivity extends AppCompatActivity {
         string = (EditText) findViewById(R.id.sendString);
         // our button
         send = (Button) findViewById(R.id.hostBtn);
-
-        HostVsGuestDialogFragment HvG = new HostVsGuestDialogFragment();
 
         // to call our addString button on click
         send.setOnClickListener(new View.OnClickListener() {
@@ -232,7 +225,5 @@ public class MainActivity extends AppCompatActivity {
             // tell them to put something in
             Toast.makeText(MainActivity.this, "Please type a string to send.", Toast.LENGTH_LONG);
         }
-
-
     }
 }
