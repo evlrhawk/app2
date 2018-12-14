@@ -16,6 +16,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.spotify.android.appremote.api.SpotifyAppRemote;
+import com.spotify.protocol.client.Subscription;
+import com.spotify.protocol.types.PlayerState;
+import com.spotify.protocol.types.Track;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +37,8 @@ public class HostActivity extends AppCompatActivity {
     List<ToSend> sendList;
     List<String> keyList;
     private ListView listView;
-
+    private SpotifyAppRemote mSpotifyAppRemote;
+    private EditText string;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,6 +146,27 @@ public class HostActivity extends AppCompatActivity {
                 Log.e(TAG,"You done messed up Aaron!");
             }
         });
+    }
+
+    public void onPlay(View view) {
+        // Play a playlist
+//        mSpotifyAppRemote.getPlayerApi().play("spotify:user:spotify:playlist:37i9dQZF1DX2sUQwD7tbmL");
+//        mSpotifyAppRemote.getPlayerApi().play("spotify:user:sofigomezc:playlist:1EoaGONaSh0XVkuljYXvdq");
+        mSpotifyAppRemote.getPlayerApi().play("spotify:album:3JfSxDfmwS5OeHPwLSkrfr");
+        // Subscribe to PlayerState
+        String songReq = string.getText().toString();
+
+
+        mSpotifyAppRemote.getPlayerApi()
+                .subscribeToPlayerState()
+                .setEventCallback(new Subscription.EventCallback<PlayerState>() {
+                    public void onEvent(PlayerState playerState) {
+                        final Track track = playerState.track;
+                        if (track != null) {
+                            Log.d("MainActivity", track.name + " by " + track.artist.name);
+                        }
+                    }
+                });
     }
 
 
