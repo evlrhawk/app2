@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                         mSpotifyAppRemote = spotifyAppRemote;
                         Log.d("MainActivity", "Connected! Yay!");
                         // Now you can start interacting with App Remote
-                        connected();
+//                        connected();
                     }
                     public void onFailure(Throwable throwable) {
                         Log.e("MyActivity", throwable.getMessage(), throwable);
@@ -124,25 +124,25 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
         SpotifyAppRemote.disconnect(mSpotifyAppRemote);
     }
-    private void connected() {
-        // Play a playlist
-//        mSpotifyAppRemote.getPlayerApi().play("spotify:user:spotify:playlist:37i9dQZF1DX2sUQwD7tbmL");
-//        mSpotifyAppRemote.getPlayerApi().play("spotify:user:sofigomezc:playlist:1EoaGONaSh0XVkuljYXvdq");
-        mSpotifyAppRemote.getPlayerApi().play("spotify:album:3JfSxDfmwS5OeHPwLSkrfr");
-        // Subscribe to PlayerState
-        String songReq = string.getText().toString();
-
-
-        mSpotifyAppRemote.getPlayerApi()
-                .subscribeToPlayerState()
-                .setEventCallback(new Subscription.EventCallback<PlayerState>() {
-                    public void onEvent(PlayerState playerState) {
-                        final Track track = playerState.track;
-                        if (track != null) {
-                            Log.d("MainActivity", track.name + " by " + track.artist.name);
-                        }
-                    }
-                });
-    }
+//    private void connected() {
+//        // Play a playlist
+////        mSpotifyAppRemote.getPlayerApi().play("spotify:user:spotify:playlist:37i9dQZF1DX2sUQwD7tbmL");
+////        mSpotifyAppRemote.getPlayerApi().play("spotify:user:sofigomezc:playlist:1EoaGONaSh0XVkuljYXvdq");
+//        mSpotifyAppRemote.getPlayerApi().play("spotify:album:3JfSxDfmwS5OeHPwLSkrfr");
+//        // Subscribe to PlayerState
+//        String songReq = string.getText().toString();
+//
+//
+//        mSpotifyAppRemote.getPlayerApi()
+//                .subscribeToPlayerState()
+//                .setEventCallback(new Subscription.EventCallback<PlayerState>() {
+//                    public void onEvent(PlayerState playerState) {
+//                        final Track track = playerState.track;
+//                        if (track != null) {
+//                            Log.d("MainActivity", track.name + " by " + track.artist.name);
+//                        }
+//                    }
+//                });
+//    }
 
 }
