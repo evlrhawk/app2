@@ -29,11 +29,11 @@ public class HostActivity extends AppCompatActivity {
 
     private Button btnPull, send, play;
 
-
-
     // to be used when making our queue in FireBase
     DatabaseReference databaseReference;
+    // the string that will be sent to FireBase
     private EditText URI;
+    // to make a ListView of what is in FireBase
     List<ToSend> sendList;
     List<String> keyList;
     private ListView listView;
@@ -45,12 +45,13 @@ public class HostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_host);
 
-        // this gets the location of our firebase
+        // this gets the location of our FireBase
         databaseReference = FirebaseDatabase.getInstance().getReference("track");
-
+        // The text that will be sent to FireBase
         URI = (EditText) findViewById(R.id.txtHostSend);
+        // A button to pull data from Firebase
         btnPull = (Button) findViewById(R.id.btnGuestSend);
-
+        // Button to
         send = (Button) findViewById(R.id.btnHostSend);
         play = (Button) findViewById(R.id.btnHostPlay);
 
