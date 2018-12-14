@@ -1,18 +1,35 @@
 package com.example.evlrhawk.digitaljukebox;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
-public class Client extends AppCompatActivity {
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+public class GuestActivity extends AppCompatActivity {
+
+    private Button btnPull, send, play;
+
+    // to be used when making our queue in FireBase
+    DatabaseReference databaseReference;
+    private EditText URI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_client);
+        setContentView(R.layout.activity_guest);
+
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("track");
+        URI = (EditText) findViewById(R.id.txtGuestSend);
+        send = (Button) findViewById(R.id.btnGuestPush);
     }
+
 
     /**
      * Adds a string to our firebase database
@@ -25,7 +42,7 @@ public class Client extends AppCompatActivity {
 
         Log.i(TAG, "Call to addString()");
         // the string to be sent
-        String fromApp = string.getText().toString();
+        String fromApp = URI.getText().toString();
 
         // if our text entry has something in it to send
         if (!TextUtils.isEmpty(fromApp)) {
@@ -46,7 +63,7 @@ public class Client extends AppCompatActivity {
             Log.v(TAG, "Sent to \"blank\" 'if' statement");
 
             // tell them to put something in
-            Toast.makeText(MainActivity.this, "Please type a string to send.", Toast.LENGTH_LONG);
+            Toast.makeText(GuestActivity.this, "Please type a string to send.", Toast.LENGTH_LONG);
         }
     }
 }
