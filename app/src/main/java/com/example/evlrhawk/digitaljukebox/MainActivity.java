@@ -37,15 +37,15 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE = 1337;
     private static final String REDIRECT_URI = "com.example.evlrhawk.digitaljukebox://callback";
     private SpotifyAppRemote mSpotifyAppRemote;
-    private static final String TAG = "Failed Here";
+//    private static final String TAG = "Failed Here";
     private EditText string;
     private Button send, btnGuest;
-    private ListView listView;
-    List<ToSend> sendList;
-    List<String> keyList;
+//    private ListView listView;
+//    List<ToSend> sendList;
+//    List<String> keyList;
 
     // to be used when making our queue in FireBase
-    DatabaseReference databaseReference;
+//    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +62,9 @@ public class MainActivity extends AppCompatActivity {
         AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
 
         // get the database reference
-        databaseReference = FirebaseDatabase.getInstance().getReference("track");
-        sendList = new ArrayList<>();
-        keyList = new ArrayList<>();
+//        databaseReference = FirebaseDatabase.getInstance().getReference("track");
+//        sendList = new ArrayList<>();
+//        keyList = new ArrayList<>();
         // string taken from text entry in app
 //        string = (EditText) findViewById(R.id.sendString);
         // our button

@@ -40,7 +40,7 @@ public class HostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_host);
 
-
+        // this gets the location of our firebase
         databaseReference = FirebaseDatabase.getInstance().getReference("track");
 
         URI = (EditText) findViewById(R.id.txtHostSend);
@@ -74,7 +74,6 @@ public class HostActivity extends AppCompatActivity {
      *
      * Written by Christopher Wilson
      */
-
     public void addString() {
         final String TAG = "From addString()";
 
@@ -106,6 +105,11 @@ public class HostActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Shows the contents of the firebase database
+     *
+     * Written by Thomas Burr
+     */
     public void showData(){
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
