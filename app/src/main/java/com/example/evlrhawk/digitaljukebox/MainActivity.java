@@ -36,10 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String CLIENT_ID = "27ead52d8b6d426a85b5a01cd63b388c";
     private static final int REQUEST_CODE = 1337;
     private static final String REDIRECT_URI = "com.example.evlrhawk.digitaljukebox://callback";
-    private SpotifyAppRemote mSpotifyAppRemote;
-
-    private EditText string;
-    private Button send, btnGuest;
+  
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
