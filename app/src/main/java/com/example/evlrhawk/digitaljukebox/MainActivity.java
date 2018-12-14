@@ -37,21 +37,14 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE = 1337;
     private static final String REDIRECT_URI = "com.example.evlrhawk.digitaljukebox://callback";
     private SpotifyAppRemote mSpotifyAppRemote;
-//    private static final String TAG = "Failed Here";
+
     private EditText string;
     private Button send, btnGuest;
-//    private ListView listView;
-//    List<ToSend> sendList;
-//    List<String> keyList;
-
-    // to be used when making our queue in FireBase
-//    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        listView = findViewById(R.id.list_view);
 
         AuthenticationRequest.Builder builder =
                 new AuthenticationRequest.Builder(CLIENT_ID, AuthenticationResponse.Type.TOKEN, REDIRECT_URI);
@@ -61,32 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
 
-        // get the database reference
-//        databaseReference = FirebaseDatabase.getInstance().getReference("track");
-//        sendList = new ArrayList<>();
-//        keyList = new ArrayList<>();
-        // string taken from text entry in app
-//        string = (EditText) findViewById(R.id.sendString);
-        // our button
-
-//        // to call our addString button on click
-//        send.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                addString();
-//            }
-//        });
-//        // Attach a listener to read the data at our posts reference
-
-//        btnPull.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                showData();
-//            }
-//        });
-
         //should make a button to go to the view
-
         Button hostBtn = (Button) findViewById(R.id.hostBtn);
         hostBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,39 +73,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
-//    public void showData(){
-//        databaseReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                ToSendAdapter toSendAdapter;
-//                sendList.clear();
-//                toSendAdapter = new ToSendAdapter(MainActivity.this, sendList);
-//                listView.setAdapter(toSendAdapter);
-//                keyList.clear();
-//                for(DataSnapshot trackSnapshot : dataSnapshot.getChildren()) {
-//                    ToSend toSend = new ToSend();
-//                    if (toSend == null){
-//                        toSend.setToSend("1");
-//                        toSend = trackSnapshot.getValue(ToSend.class);
-//                        keyList.add(trackSnapshot.getKey());
-//                    }
-//                    else {
-//                        toSend = trackSnapshot.getValue(ToSend.class);
-//                        keyList.add(trackSnapshot.getKey());
-//                    }
-//                    sendList.add(toSend);
-//                }
-//                toSendAdapter = new ToSendAdapter(MainActivity.this, sendList);
-//                listView.setAdapter(toSendAdapter);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                Log.e(TAG,"You done messed up Aaron!");
-//            }
-//        });
-//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {

@@ -10,64 +10,57 @@
         android:id="@+id/btnGuestSend"
         android:layout_width="wrap_content"
         android:layout_height="47dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginLeft="22dp"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/button"
         android:text="@string/pull"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.966"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnHostSend"
+        app:layout_constraintTop_toBottomOf="@+id/txtHostSend" />
 
     <Button
         android:id="@+id/btnHostPlay"
         android:layout_width="wrap_content"
         android:layout_height="47dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="152dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/button"
         android:onClick="onPlay"
         android:text="@string/play"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        app:layout_constraintTop_toBottomOf="@+id/btnHostSend" />
 
     <Button
         android:id="@+id/btnHostSend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
-        android:layout_marginRight="36dp"
         android:background="@drawable/button"
         android:text="@string/send_it"
         android:textColor="@android:color/white"
-        app:layout_constraintBaseline_toBaselineOf="@+id/txtHostSend"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnGuestSend"
+        app:layout_constraintEnd_toStartOf="@+id/btnGuestSend"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/txtHostSend" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/txtHostSend"
-        android:layout_width="wrap_content"
+        android:layout_width="248dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="29dp"
-        android:layout_marginLeft="29dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginRight="52dp"
         android:ems="10"
         android:hint="@string/string_to_send"
         android:inputType="text|textUri|textPersonName"
         android:singleLine="true"
         android:textColor="@android:color/white"
-        app:layout_constraintEnd_toStartOf="@+id/btnGuestSend"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.776"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
@@ -87,10 +80,14 @@
         android:layout_height="216dp"
         android:layout_marginStart="25dp"
         android:layout_marginLeft="25dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnHostPlay" />
 
 </android.support.constraint.ConstraintLayout>
