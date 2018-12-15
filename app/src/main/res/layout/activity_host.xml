@@ -25,7 +25,6 @@
         android:layout_height="47dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/button"
-        android:onClick="onPlay"
         android:text="@string/play"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"

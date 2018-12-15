@@ -32,20 +32,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
+    // spotify developer information
     private static final String CLIENT_ID = "27ead52d8b6d426a85b5a01cd63b388c";
     private static final int REQUEST_CODE = 1337;
     private static final String REDIRECT_URI = "com.example.evlrhawk.digitaljukebox://callback";
-    private SpotifyAppRemote mSpotifyAppRemote;
 
-    private EditText string;
-    private Button send, btnGuest;
 
+    /**
+     * Starts the app with the Spotify Login
+     * It has two buttons- Host and Guest
+     *      Host - takes to Host Activity
+     *      Guest - take to Guest Activity
+     *
+     * @author Tyler Elikington, Anthony Lasley
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // authenticates user through spotify
         AuthenticationRequest.Builder builder =
                 new AuthenticationRequest.Builder(CLIENT_ID, AuthenticationResponse.Type.TOKEN, REDIRECT_URI);
 
@@ -54,16 +60,23 @@ public class MainActivity extends AppCompatActivity {
 
         AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
 
-        //should make a button to go to the view
+        /**
+         * Starts the Host Activity
+         * @params an onClickListener
+         */
         Button hostBtn = (Button) findViewById(R.id.hostBtn);
+        // starts host activity if button is pressed
         hostBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View hostView){
-
                 startActivity(new Intent(MainActivity.this, HostActivity.class));
             }
         });
 
+        /**
+         * Starts the Guest Activity
+         * @params an onClickListener
+         */
         Button guestBtn = (Button) findViewById(R.id.guestBtn);
         guestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +87,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    /**
+     * Based on whether the Spotify login was successful
+     * @param requestCode
+     * @param resultCode
+     * @param intent
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
@@ -95,53 +115,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        ConnectionParams connectionParams =
-                new ConnectionParams.Builder(CLIENT_ID)
-                        .setRedirectUri(REDIRECT_URI)
-                        .showAuthView(true)
-                        .build();
-        SpotifyAppRemote.connect(this, connectionParams,
-                new Connector.ConnectionListener() {
-                    public void onConnected(SpotifyAppRemote spotifyAppRemote) {
-                        mSpotifyAppRemote = spotifyAppRemote;
-                        Log.d("MainActivity", "Connected! Yay!");
-                        // Now you can start interacting with App Remote
-//                        connected();
-                    }
-                    public void onFailure(Throwable throwable) {
-                        Log.e("MyActivity", throwable.getMessage(), throwable);
-                        // Something went wrong when attempting to connect! Handle errors here
-                    }
-                });
-    }
-    @Override
-    protected void onStop() {
-        super.onStop();
-        SpotifyAppRemote.disconnect(mSpotifyAppRemote);
-    }
-//    private void connected() {
-//        // Play a playlist
-////        mSpotifyAppRemote.getPlayerApi().play("spotify:user:spotify:playlist:37i9dQZF1DX2sUQwD7tbmL");
-////        mSpotifyAppRemote.getPlayerApi().play("spotify:user:sofigomezc:playlist:1EoaGONaSh0XVkuljYXvdq");
-//        mSpotifyAppRemote.getPlayerApi().play("spotify:album:3JfSxDfmwS5OeHPwLSkrfr");
-//        // Subscribe to PlayerState
-//        String songReq = string.getText().toString();
-//
-//
-//        mSpotifyAppRemote.getPlayerApi()
-//                .subscribeToPlayerState()
-//                .setEventCallback(new Subscription.EventCallback<PlayerState>() {
-//                    public void onEvent(PlayerState playerState) {
-//                        final Track track = playerState.track;
-//                        if (track != null) {
-//                            Log.d("MainActivity", track.name + " by " + track.artist.name);
-//                        }
-//                    }
-//                });
-//    }
 
 }

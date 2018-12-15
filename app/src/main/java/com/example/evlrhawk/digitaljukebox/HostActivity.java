@@ -29,7 +29,7 @@ import java.util.List;
 public class HostActivity extends AppCompatActivity {
     private final String TAG = "HostActivity";
 
-
+    // spotify developer information
     private static final String CLIENT_ID = "27ead52d8b6d426a85b5a01cd63b388c";
     private static final int REQUEST_CODE = 1337;
     private static final String REDIRECT_URI = "com.example.evlrhawk.digitaljukebox://callback";
@@ -73,6 +73,7 @@ public class HostActivity extends AppCompatActivity {
             }
         });
 
+        // shows the data when pull button is clicked
         btnPull.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,20 +81,16 @@ public class HostActivity extends AppCompatActivity {
             }
         });
 
-
-//        Button guestBtn = (Button) findViewById(R.id.guestBtn);
-//        guestBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View guestView){
-//                startActivity(new Intent(MainActivity.this, GuestActivity.class));
-//            }
-//        });
-
-
+        /**
+         * Plays our playlist
+         *
+         * @author Tyler Elikington, Anthony Lasley
+         */
         Button playBtn = (Button) findViewById(R.id.btnHostPlay);
         playBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View playView) {
+
                 // Sets first song to play
                 ToSend _toSend = sendList.get(0);
                 String song = _toSend.getToSend();
@@ -107,26 +104,30 @@ public class HostActivity extends AppCompatActivity {
                     mSpotifyAppRemote.getPlayerApi().queue(song);
                 }
 
+                // sends a uri through the PlayerApi to be played
+//                mSpotifyAppRemote.getPlayerApi().play("spotify:album:3JfSxDfmwS5OeHPwLSkrfr");
+
+
+                // Subscribe to PlayerState
                 mSpotifyAppRemote.getPlayerApi()
                         .subscribeToPlayerState()
                         .setEventCallback(new Subscription.EventCallback<PlayerState>() {
                             public void onEvent(PlayerState playerState) {
                                 final Track track = playerState.track;
                                 if (track != null) {
-                                    Log.d("MainActivity", track.name + " by " + track.artist.name);
+                                    Log.d("HostActivity", track.name + " by " + track.artist.name);
                                 }
                             }
                         });
             }
         });
-
-
     }
 
     /**
      * Adds a string to our firebase database
+     * String should be a URI to function properly
      *
-     * Written by Christopher Wilson
+     * @author Christopher Wilson
      */
     public void addString() {
         final String TAG = "From addString()";
@@ -159,10 +160,11 @@ public class HostActivity extends AppCompatActivity {
         }
     }
 
+
     /**
      * Shows the contents of the firebase database
      *
-     * Written by Thomas Burr
+     * @author Thomas Burr
      */
     public void showData(){
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -200,27 +202,12 @@ public class HostActivity extends AppCompatActivity {
         });
     }
 
-    public void onPlay(View view) {
-        // Play a playlist
-//        mSpotifyAppRemote.getPlayerApi().play("spotify:user:spotify:playlist:37i9dQZF1DX2sUQwD7tbmL");
-//        mSpotifyAppRemote.getPlayerApi().play("spotify:user:sofigomezc:playlist:1EoaGONaSh0XVkuljYXvdq");
-        mSpotifyAppRemote.getPlayerApi().play("spotify:album:3JfSxDfmwS5OeHPwLSkrfr");
-        // Subscribe to PlayerState
-        String songReq = string.getText().toString();
 
-
-        mSpotifyAppRemote.getPlayerApi()
-                .subscribeToPlayerState()
-                .setEventCallback(new Subscription.EventCallback<PlayerState>() {
-                    public void onEvent(PlayerState playerState) {
-                        final Track track = playerState.track;
-                        if (track != null) {
-                            Log.d("MainActivity", track.name + " by " + track.artist.name);
-                        }
-                    }
-                });
-    }
-
+    /**
+     * Connects to Spotify
+     *
+     * @author Tyler Elikington, Anthony Lasley
+     */
     @Override
     protected void onStart() {
         super.onStart();
@@ -233,16 +220,16 @@ public class HostActivity extends AppCompatActivity {
                 new Connector.ConnectionListener() {
                     public void onConnected(SpotifyAppRemote spotifyAppRemote) {
                         mSpotifyAppRemote = spotifyAppRemote;
-                        Log.d("MainActivity", "Connected! Yay!");
-                        // Now you can start interacting with App Remote
-//                        connected();
+                        Log.d("HostActivity", "Connected! Yay!");
                     }
                     public void onFailure(Throwable throwable) {
-                        Log.e("MyActivity", throwable.getMessage(), throwable);
                         // Something went wrong when attempting to connect! Handle errors here
+                        Log.e("HostActivity", throwable.getMessage(), throwable);
                     }
                 });
     }
+
+    // disconnects from spotify onStop
     @Override
     protected void onStop() {
         super.onStop();
