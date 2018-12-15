@@ -74,6 +74,7 @@ public class HostActivity extends AppCompatActivity {
             }
         });
 
+        // shows the data when pull button is clicked
         btnPull.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,6 +91,7 @@ public class HostActivity extends AppCompatActivity {
         playBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View playView) {
+                // sends a uri through the PlayerApi to be played
                 mSpotifyAppRemote.getPlayerApi().play("spotify:album:3JfSxDfmwS5OeHPwLSkrfr");
 
                 // Subscribe to PlayerState
@@ -99,7 +101,7 @@ public class HostActivity extends AppCompatActivity {
                             public void onEvent(PlayerState playerState) {
                                 final Track track = playerState.track;
                                 if (track != null) {
-                                    Log.d("MainActivity", track.name + " by " + track.artist.name);
+                                    Log.d("HostActivity", track.name + " by " + track.artist.name);
                                 }
                             }
                         });
@@ -185,7 +187,7 @@ public class HostActivity extends AppCompatActivity {
 
 
     /**
-     *
+     * Connects to Spotify
      *
      * @author Tyler Elikington, Anthony Lasley
      */
@@ -201,17 +203,16 @@ public class HostActivity extends AppCompatActivity {
                 new Connector.ConnectionListener() {
                     public void onConnected(SpotifyAppRemote spotifyAppRemote) {
                         mSpotifyAppRemote = spotifyAppRemote;
-                        Log.d("MainActivity", "Connected! Yay!");
-                        // Now you can start interacting with App Remote
-//                        connected();
+                        Log.d("HostActivity", "Connected! Yay!");
                     }
                     public void onFailure(Throwable throwable) {
-                        Log.e("MyActivity", throwable.getMessage(), throwable);
                         // Something went wrong when attempting to connect! Handle errors here
+                        Log.e("HostActivity", throwable.getMessage(), throwable);
                     }
                 });
     }
 
+    // disconnects from spotify onStop
     @Override
     protected void onStop() {
         super.onStop();
