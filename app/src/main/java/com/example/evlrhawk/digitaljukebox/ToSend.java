@@ -1,5 +1,11 @@
 package com.example.evlrhawk.digitaljukebox;
 
+/**
+ * This class defines the object that we will use
+ * to send to firebase
+ *
+ * @author Christopher Wilson
+ */
 public class ToSend {
     private String toSend;
 

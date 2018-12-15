@@ -37,7 +37,15 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE = 1337;
     private static final String REDIRECT_URI = "com.example.evlrhawk.digitaljukebox://callback";
 
-    //checks to see if your logged in if not logs you in
+
+    /**
+     * Starts the app with the Spotify Login
+     * It has two buttons- Host and Guest
+     *      Host - takes to Host Activity
+     *      Guest - take to Guest Activity
+     *
+     * @author Tyler Elikington, Anthony Lasley
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,18 +60,23 @@ public class MainActivity extends AppCompatActivity {
 
         AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
 
-        //should make a button to go to the view
+        /**
+         * Starts the Host Activity
+         * @params an onClickListener
+         */
         Button hostBtn = (Button) findViewById(R.id.hostBtn);
         // starts host activity if button is pressed
         hostBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View hostView){
-
                 startActivity(new Intent(MainActivity.this, HostActivity.class));
             }
         });
 
-        // starts guest activity if button is pressed
+        /**
+         * Starts the Guest Activity
+         * @params an onClickListener
+         */
         Button guestBtn = (Button) findViewById(R.id.guestBtn);
         guestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +87,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    // spotify code for authentication
+
+    /**
+     * Based on whether the Spotify login was successful
+     * @param requestCode
+     * @param resultCode
+     * @param intent
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);

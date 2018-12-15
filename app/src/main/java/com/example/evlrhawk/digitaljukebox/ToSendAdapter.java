@@ -11,6 +11,12 @@ import android.widget.TextView;
 
 import java.util.List;
 
+/**
+ * An adapter for our ToSend class that allows us to display
+ * in our list view
+ *
+ * @author Thomas Burr
+ */
 public class ToSendAdapter extends ArrayAdapter<ToSend> {
     private Activity context;
     private List<ToSend> sendList;

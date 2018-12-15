@@ -44,7 +44,6 @@ public class GuestActivity extends AppCompatActivity {
      *
      * Written by Christopher Wilson
      */
-
     public void addString() {
         final String TAG = "From addString()";
 
