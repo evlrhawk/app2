@@ -181,7 +181,7 @@ public class HostActivity extends AppCompatActivity {
     /**
      * Plays our playlist
      *
-     * @author
+     * @author Tyler Elikington, Anthony Lasley
      */
     public void onPlay(View view) {
         // Play a playlist
@@ -207,7 +207,7 @@ public class HostActivity extends AppCompatActivity {
     /**
      *
      *
-     * @author
+     * @author Tyler Elikington, Anthony Lasley
      */
     @Override
     protected void onStart() {
