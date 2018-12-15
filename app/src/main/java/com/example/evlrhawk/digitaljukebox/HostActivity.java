@@ -81,6 +81,11 @@ public class HostActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * Plays our playlist
+         *
+         * @author Tyler Elikington, Anthony Lasley
+         */
         Button playBtn = (Button) findViewById(R.id.btnHostPlay);
         playBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -178,31 +183,6 @@ public class HostActivity extends AppCompatActivity {
         });
     }
 
-    /**
-     * Plays our playlist
-     *
-     * @author Tyler Elikington, Anthony Lasley
-     */
-    public void onPlay(View view) {
-        // Play a playlist
-//        mSpotifyAppRemote.getPlayerApi().play("spotify:user:spotify:playlist:37i9dQZF1DX2sUQwD7tbmL");
-//        mSpotifyAppRemote.getPlayerApi().play("spotify:user:sofigomezc:playlist:1EoaGONaSh0XVkuljYXvdq");
-        mSpotifyAppRemote.getPlayerApi().play("spotify:album:3JfSxDfmwS5OeHPwLSkrfr");
-        // Subscribe to PlayerState
-        String songReq = string.getText().toString();
-
-
-        mSpotifyAppRemote.getPlayerApi()
-                .subscribeToPlayerState()
-                .setEventCallback(new Subscription.EventCallback<PlayerState>() {
-                    public void onEvent(PlayerState playerState) {
-                        final Track track = playerState.track;
-                        if (track != null) {
-                            Log.d("MainActivity", track.name + " by " + track.artist.name);
-                        }
-                    }
-                });
-    }
 
     /**
      *
@@ -231,6 +211,7 @@ public class HostActivity extends AppCompatActivity {
                     }
                 });
     }
+
     @Override
     protected void onStop() {
         super.onStop();
