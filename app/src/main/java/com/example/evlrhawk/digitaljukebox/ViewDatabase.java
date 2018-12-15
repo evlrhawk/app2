@@ -19,6 +19,11 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class displays our firebase contents in a list view object
+ *
+ * @author Thomas Burr
+ */
 public class ViewDatabase extends AppCompatActivity {
 
     private static final String TAG = "Failed Here";

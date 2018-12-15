@@ -41,6 +41,14 @@ public class MainActivity extends AppCompatActivity {
     private EditText string;
     private Button send, btnGuest;
 
+    /**
+     * Starts the app with the Spotify Login
+     * It has two buttons- Host and Guest
+     *      Host - takes to Host Activity
+     *      Guest - take to Guest Activity
+     *
+     * @author Tyler Elikington, Anthony Lasley
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,16 +62,22 @@ public class MainActivity extends AppCompatActivity {
 
         AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
 
-        //should make a button to go to the view
+        /**
+         * Starts the Host Activity
+         * @params an onClickListener
+         */
         Button hostBtn = (Button) findViewById(R.id.hostBtn);
         hostBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View hostView){
-
                 startActivity(new Intent(MainActivity.this, HostActivity.class));
             }
         });
 
+        /**
+         * Starts the Guest Activity
+         * @params an onClickListener
+         */
         Button guestBtn = (Button) findViewById(R.id.guestBtn);
         guestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +88,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Based on whether the Spotify login was successful
+     * @param requestCode
+     * @param resultCode
+     * @param intent
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);

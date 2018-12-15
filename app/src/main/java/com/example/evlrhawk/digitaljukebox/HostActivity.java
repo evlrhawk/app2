@@ -81,24 +81,13 @@ public class HostActivity extends AppCompatActivity {
             }
         });
 
-
-//        Button guestBtn = (Button) findViewById(R.id.guestBtn);
-//        guestBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View guestView){
-//                startActivity(new Intent(MainActivity.this, GuestActivity.class));
-//            }
-//        });
-
-
         Button playBtn = (Button) findViewById(R.id.btnHostPlay);
         playBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View playView) {
                 mSpotifyAppRemote.getPlayerApi().play("spotify:album:3JfSxDfmwS5OeHPwLSkrfr");
+
                 // Subscribe to PlayerState
-
-
                 mSpotifyAppRemote.getPlayerApi()
                         .subscribeToPlayerState()
                         .setEventCallback(new Subscription.EventCallback<PlayerState>() {
@@ -111,14 +100,13 @@ public class HostActivity extends AppCompatActivity {
                         });
             }
         });
-
-
     }
 
     /**
      * Adds a string to our firebase database
+     * String should be a URI to function properly
      *
-     * Written by Christopher Wilson
+     * @author Christopher Wilson
      */
     public void addString() {
         final String TAG = "From addString()";
@@ -151,10 +139,11 @@ public class HostActivity extends AppCompatActivity {
         }
     }
 
+
     /**
      * Shows the contents of the firebase database
      *
-     * Written by Thomas Burr
+     * @author Thomas Burr
      */
     public void showData(){
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -189,6 +178,11 @@ public class HostActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Plays our playlist
+     *
+     * @author
+     */
     public void onPlay(View view) {
         // Play a playlist
 //        mSpotifyAppRemote.getPlayerApi().play("spotify:user:spotify:playlist:37i9dQZF1DX2sUQwD7tbmL");
@@ -210,6 +204,11 @@ public class HostActivity extends AppCompatActivity {
                 });
     }
 
+    /**
+     *
+     *
+     * @author
+     */
     @Override
     protected void onStart() {
         super.onStart();
