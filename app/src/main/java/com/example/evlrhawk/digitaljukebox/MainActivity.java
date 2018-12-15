@@ -32,14 +32,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
+    // spotify developer information
     private static final String CLIENT_ID = "27ead52d8b6d426a85b5a01cd63b388c";
     private static final int REQUEST_CODE = 1337;
     private static final String REDIRECT_URI = "com.example.evlrhawk.digitaljukebox://callback";
-    private SpotifyAppRemote mSpotifyAppRemote;
 
-    private EditText string;
-    private Button send, btnGuest;
 
     /**
      * Starts the app with the Spotify Login
@@ -54,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // authenticates user through spotify
         AuthenticationRequest.Builder builder =
                 new AuthenticationRequest.Builder(CLIENT_ID, AuthenticationResponse.Type.TOKEN, REDIRECT_URI);
 
@@ -67,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
          * @params an onClickListener
          */
         Button hostBtn = (Button) findViewById(R.id.hostBtn);
+        // starts host activity if button is pressed
         hostBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View hostView){
@@ -87,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
 
     /**
      * Based on whether the Spotify login was successful
